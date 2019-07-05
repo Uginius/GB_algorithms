@@ -9,8 +9,8 @@ public class Study {
         StudyArrayList<Integer> studyArray = new StudyArrayList<Integer>();
         for (int i = 0; i < n; i++) studyArray.add(rand.nextInt(500));
         System.out.println(studyArray);
-        System.out.println(studyArray.getSize());
-        System.out.println(studyArray.indexOf(50));
-
+//        System.out.println(studyArray.getSize());
+        studyArray.sortInsertion(new MyComporator());
+        System.out.println(studyArray);
     }
 }
