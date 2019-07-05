@@ -25,7 +25,8 @@ public class Study {
 
     private static void NewArray(StudyArrayList<Integer> studyArray, StudyArrayList<Integer> array1, StudyArrayList<Integer> array2) {
         for (int i = 0; i < studyArray.getSize(); i++) {
-            System.out.println(studyArray[i]);
+            array1.add(studyArray[i]);
+//            System.out.println(studyArray[i]);
         }
     }
 
