@@ -30,4 +30,29 @@ public class StudyArrayList<Item> {
         list = temp;
     }
 
+    public int indexOf(Item item) {
+        for (int i = 0; i < size; i++) {
+            if (list[i].equals(item)) return i;
+        }
+        return -1;
+    }
+
+    public boolean remove(Item item) {
+        int index = indexOf(item);
+        if (index == -1) return false;
+        for (int i = index; i < size - 1; i++) list[i] = list[i + 1];
+        list[size - 1] = null;
+        size--;
+        if (size == list.length / 4 && size > 0) resize(list.length / 2);
+        return true;
+    }
+
+    public boolean contains(Item item) {
+        return indexOf(item) != -1;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
 }
