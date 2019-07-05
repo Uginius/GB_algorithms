@@ -55,4 +55,12 @@ public class StudyArrayList<Item> {
         return size == 0;
     }
 
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            s.append(list[i] + " ");
+        }
+        return s.toString();
+    }
+
 }
