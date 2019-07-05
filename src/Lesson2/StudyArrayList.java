@@ -90,21 +90,35 @@ public class StudyArrayList<Item> implements Iterable {
     }
 
     // Sorting methods
-    public void sortSelect(Comparator<Item> cmp) {
+
+    public void sortSelection(Comparator<Item> cmp) {
         for (int i = 0; i < size - 1; i++) {
             int min = i;
-            for (int j = 0; j < size; j++) {
-                if (less((Item) list[j], (Item) list[min], cmp)) min = j;
+            for (int j = i + 1; j < size; j++) {
+                if (less((Item)list[j], (Item)list[min], cmp)) min = j;
             }
             exchange(i, min);
         }
     }
 
+    public void sortSelect() {
+        int i, j, mark;
+        for (i = 0; i < this.size; i++) {
+            mark = i;
+            for (j = i + 1; j < this.size; j++) {
+                if ((int) list[j] < (int) list[mark]) mark = j;
+            }
+            exchange(i, mark);
+        }
+    }
+
+
     public void sortInsertion(Comparator<Item> cmp) {
         for (int i = 0; i < size; i++) {
             for (int j = i; j > 0; j--) {
                 if (less((Item) list[j], (Item) list[j - 1], cmp)) exchange(j, j - 1);
-                else break;;
+                else break;
+                ;
             }
 
         }
