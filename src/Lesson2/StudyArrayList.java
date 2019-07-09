@@ -11,9 +11,9 @@ public class StudyArrayList<Item> implements Iterable {
         return size;
     }
 
-    public Item[] get(int index) {
+    public Item get(int index) {
         if (index < 0 || index > size - 1) throw new IndexOutOfBoundsException();
-        return (Item[]) list[index];
+        return (Item) list[index];
     }
 
     public void set(int index, Item item) {
