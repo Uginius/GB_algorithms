@@ -7,24 +7,15 @@ public class Program {
         deq.insertRight('b');
         deq.insertRight('c');
         deq.insertRight('d');
-        deq.insertRight('e');
         System.out.println(deq);
-        System.out.println(deq.size());
-        System.out.println(deq.peekLeft());
-        deq.removeLeft();
-        System.out.println(deq.peekLeft());
-        deq.removeLeft();
-        deq.removeLeft();
-        deq.removeLeft();
-        System.out.println(deq.peekRight());
 
-        deq.removeLeft();
+//        deq.removeRight();
 
-        System.out.println(deq.isEmpty());
+        deq.insertLeft('z');
         deq.insertRight('f');
         deq.insertRight('g');
         deq.insertRight('h');
         System.out.println(deq);
-
+        System.out.println(deq.size());
     }
 }

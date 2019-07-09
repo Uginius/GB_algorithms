@@ -11,7 +11,7 @@ public class MyArrayDeq<Item> {
     //    e
     //    s = 2
     //0 1 2 3
-    //i j g h
+    //a b c d
     //0 1 2 3 4 5 6 7
     //g h i j
 
@@ -33,15 +33,20 @@ public class MyArrayDeq<Item> {
 
     public void insertRight(Item item) {
         if (size == deq.length) resize(deq.length * 2);
-        deq[right++] = item;
+        deq[size++] = item;
+        System.out.println("Right: " + right + " Size: " + size);
+    }
+
+    public void insertLeft(Item item) {
+        if (size == deq.length) resize(deq.length * 2);
+        deq[left++] = item;
         right %= deq.length;
         size++;
+        System.out.println("Right (IL): " + right);
     }
 
     public Item removeLeft() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Deq is empty.");
-        }
+        if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
         Item item = (Item) deq[left];
         deq[left] = null;
         size--;
@@ -50,20 +55,28 @@ public class MyArrayDeq<Item> {
         return item;
     }
 
+    public Item removeRight() {
+        if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
+        int rt = right - 1;
+
+        Item item = (Item) deq[rt];
+        deq[rt] = null;
+        size--;
+        left = (left + 1) % deq.length;
+        if (size == deq.length / 4 && size > 0) resize(deq.length / 2);
+        return item;
+    }
+
     public Item peekLeft() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Deq is empty.");
-        }
+        if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
         return (Item) deq[left];
     }
 
-    public Item peekRight() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Deq is empty.");
-        }
+/*    public Item peekRight() {
+        if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
         System.out.println("Right: " + right);
         return (Item) deq[right - 1];
-    }
+    }*/
 
     public String toString() {
         StringBuilder s = new StringBuilder();
