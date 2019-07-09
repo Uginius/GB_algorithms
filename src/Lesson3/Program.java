@@ -2,25 +2,29 @@ package Lesson3;
 
 public class Program {
     public static void main(String[] args) {
-        MyArrayQueue<Character> queue = new MyArrayQueue<>();
-        queue.enqueue('a');
-        queue.enqueue('b');
-        queue.enqueue('c');
-        queue.enqueue('d');
-        queue.enqueue('e');
-        System.out.println(queue);
-        System.out.println(queue.size());
-        System.out.println(queue.peekFront());
-        queue.dequeue();
-        System.out.println(queue.peekFront());
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        System.out.println(queue.isEmpty());
-        queue.enqueue('f');
-        queue.enqueue('g');
-        queue.enqueue('h');
-        System.out.println(queue);
+        MyArrayDeq<Character> deq = new MyArrayDeq<>();
+        deq.insertRight('a');
+        deq.insertRight('b');
+        deq.insertRight('c');
+        deq.insertRight('d');
+        deq.insertRight('e');
+        System.out.println(deq);
+        System.out.println(deq.size());
+        System.out.println(deq.peekLeft());
+        deq.removeLeft();
+        System.out.println(deq.peekLeft());
+        deq.removeLeft();
+        deq.removeLeft();
+        deq.removeLeft();
+        System.out.println(deq.peekRight());
+
+        deq.removeLeft();
+
+        System.out.println(deq.isEmpty());
+        deq.insertRight('f');
+        deq.insertRight('g');
+        deq.insertRight('h');
+        System.out.println(deq);
+
     }
 }
