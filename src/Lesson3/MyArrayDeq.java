@@ -3,8 +3,8 @@ package Lesson3;
 import java.util.NoSuchElementException;
 
 public class MyArrayDeq<Item> {
-    private int size = 0;
     private Object[] deq = new Object[1];
+    private int size = 0;
     private int left = 0;
     private int right = 0;
 
@@ -33,16 +33,17 @@ public class MyArrayDeq<Item> {
 
     public void insertRight(Item item) {
         if (size == deq.length) resize(deq.length * 2);
-        deq[size++] = item;
-        System.out.println("Right: " + right + " Size: " + size);
+        deq[right++] = item;
+        size++;
+        right %= deq.length;
+
     }
 
     public void insertLeft(Item item) {
         if (size == deq.length) resize(deq.length * 2);
-        deq[left++] = item;
-        right %= deq.length;
+        left = (left - 1 + deq.length) % deq.length;
+        deq[left] = item;
         size++;
-        System.out.println("Right (IL): " + right);
     }
 
     public Item removeLeft() {
@@ -57,12 +58,10 @@ public class MyArrayDeq<Item> {
 
     public Item removeRight() {
         if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
-        int rt = right - 1;
-
-        Item item = (Item) deq[rt];
-        deq[rt] = null;
+        right = (right - 1 + deq.length) % deq.length;
+        Item item = (Item) deq[right];
+        deq[right] = null;
         size--;
-        left = (left + 1) % deq.length;
         if (size == deq.length / 4 && size > 0) resize(deq.length / 2);
         return item;
     }
@@ -72,11 +71,11 @@ public class MyArrayDeq<Item> {
         return (Item) deq[left];
     }
 
-/*    public Item peekRight() {
+    public Item peekRight() {
         if (isEmpty()) throw new NoSuchElementException("Deq is empty.");
-        System.out.println("Right: " + right);
-        return (Item) deq[right - 1];
-    }*/
+        return (Item) deq[(right - 1 + deq.length) % deq.length];
+    }
+
 
     public String toString() {
         StringBuilder s = new StringBuilder();
