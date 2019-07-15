@@ -7,10 +7,11 @@ public class Program {
         deq.insertRight('b');
         deq.insertRight('c');
         deq.insertRight('d');
-        System.out.println(deq);;
+        System.out.println(deq);
+        ;
 
-        deq.removeRight();
-        deq.removeLeft();
+        System.out.println("removeRight " + deq.removeRight());
+        System.out.println("removeLeft " + deq.removeLeft());
 
         deq.insertLeft('z');
         deq.insertRight('f');
