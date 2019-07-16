@@ -100,11 +100,21 @@ public class MyLinkedList<Item> implements Iterable<Item> {
 
     public Item get(int index) {
         if (index < 0 || index > size - 1) throw new IndexOutOfBoundsException();
+        int half = (size - 1) / 2;
         int currentIndex = 0;
         Node currentNode = first;
-        while (currentIndex < index) {
-            currentNode = currentNode.next;
-            currentIndex++;
+        if (index < half) {
+            while (currentIndex < index) {
+                currentNode = currentNode.next;
+                currentIndex++;
+            }
+        } else {
+            currentIndex = half;
+            currentNode = last;
+            while (currentIndex >= index) {
+                currentNode = currentNode.previous;
+                currentIndex--;
+            }
         }
         return currentNode.item;
     }
