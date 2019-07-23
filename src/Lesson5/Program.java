@@ -3,7 +3,7 @@ package Lesson5;
 public class Program {
     public static void main(String[] args) {
         //double start = System.currentTimeMillis();
-        System.out.println(RaiseToDegreeRec(-2, 4));
+        System.out.println(RaiseToDegreeRec(-2, 8));
     }
 
     //6. Дано целое число a и натуральное число b. Возвести a в степень b.
@@ -14,7 +14,11 @@ public class Program {
         if (number == 0) return 0;
         if (degree == 0) return 1;
         if (degree == 1) return number;
-
+        if (degree % 2 == 0) {
+            number = number * number;
+            degree = degree / 2;
+            System.out.println("quck calculate");
+        }
         return RaiseToDegreeRec(number, degree - 1) * number;
     }
 
