@@ -1,6 +1,5 @@
 package Lesson4;
 
-import Lesson4.MyLinkedList;
 
 public class Program {
     public static void main(String[] args) {
@@ -23,7 +22,6 @@ public class Program {
         System.out.println(linkedList.indexOf('z'));
         System.out.println(linkedList.size());
         linkedList.remove('c');
-        //System.out.println(linkedList);
         for (Character c:
              linkedList) {
             System.out.print(c + ", ");
