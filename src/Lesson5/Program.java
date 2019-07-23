@@ -3,14 +3,24 @@ package Lesson5;
 public class Program {
     public static void main(String[] args) {
         //double start = System.currentTimeMillis();
-        System.out.println(productRec(1, 8));
-        //double end = System.currentTimeMillis();
-        //System.out.println((end - start) / 1000);
+        System.out.println(RaiseToDegree(-2, 3));
     }
 
     //6. Дано целое число a и натуральное число b. Возвести a в степень b.
     //a^b = a * a * ... * a - b раз
     //b - четное число!
+    public static int RaiseToDegreeRec(int number, int degree) {
+        return number;
+    }
+    public static int RaiseToDegree(int number, int degree) {
+        int result = number;
+        if (number == 0 || degree == 0)
+            throw new IllegalArgumentException(); //Нуль в нулевой степени не определен, такое выражение не имеет смысла.
+        if (number == 0) return 0;
+        if (degree == 0) return 1;
+        for (int i = 1; i < degree; i++) result *= number;
+        return result;
+    }
 
     //5. Даны два целых неотрицательных числа a и b.
     //Без использования операция умножения найти произведение чисел a и b.
@@ -22,14 +32,16 @@ public class Program {
         else if (a == 1) return b;
         else if (b == 1) return a;
         else if (a > b) return productRec(a, b - 1) + a;
-        else { //a < b
-            return productRec(b, a - 1) + b;
-        }
+        else return productRec(b, a - 1) + b;
     }
 
     public static int product(int a, int b) {
         int sum = 0;
-        if (b > a) { int tmp = a; a = b; b = tmp; }
+        if (b > a) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
         while (b > 0) {
             sum += a;
             b--;
