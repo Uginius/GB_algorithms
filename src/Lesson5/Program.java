@@ -3,19 +3,24 @@ package Lesson5;
 public class Program {
     public static void main(String[] args) {
         //double start = System.currentTimeMillis();
-        System.out.println(RaiseToDegree(-2, 3));
+        System.out.println(RaiseToDegreeRec(-2, 4));
     }
 
     //6. Дано целое число a и натуральное число b. Возвести a в степень b.
     //a^b = a * a * ... * a - b раз
     //b - четное число!
     public static int RaiseToDegreeRec(int number, int degree) {
-        return number;
+        if (number == 0 && degree == 0) throw new IllegalArgumentException(); //Нуль в нулевой степени не определен
+        if (number == 0) return 0;
+        if (degree == 0) return 1;
+        if (degree == 1) return number;
+
+        return RaiseToDegreeRec(number, degree - 1) * number;
     }
+
     public static int RaiseToDegree(int number, int degree) {
         int result = number;
-        if (number == 0 || degree == 0)
-            throw new IllegalArgumentException(); //Нуль в нулевой степени не определен, такое выражение не имеет смысла.
+        if (number == 0 && degree == 0) throw new IllegalArgumentException(); //Нуль в нулевой степени не определен
         if (number == 0) return 0;
         if (degree == 0) return 1;
         for (int i = 1; i < degree; i++) result *= number;
