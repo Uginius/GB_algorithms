@@ -14,7 +14,11 @@ public class Program {
         if (number == 0) return 0;
         if (degree == 0) return 1;
         if (degree == 1) return number;
-
+        if (degree % 2 == 0 && degree > 2) {
+            number = number * number;
+            degree = degree / 2;
+            System.out.println("quck calculate");
+        }
         return RaiseToDegreeRec(number, degree - 1) * number;
     }
 
